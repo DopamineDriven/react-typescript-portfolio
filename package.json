@@ -2,16 +2,21 @@
   "name": "react-typescript-portfolio",
   "version": "1.0.0",
   "description": "- https://app.pluralsight.com/guides/react-typescript-webpack",
-  "main": "index.js",
+  "main": "index.ts",
+  "engines": {
+    "node": "14.4.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+		"codegen:schema": "npx apollo client:download-schema --includes=src/lib/graphql --endpoint=http://localhost:7000/api",
+		"codegen:generate": "npx apollo client:codegen --localSchemaFile=schema.json --includes=src/client/lib/graphql/**/*.ts --globalTypesFile=./src/lib/graphql/globalTypes.ts --target=typescript"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DopamineDriven/react-typescript-portfolio.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Ross",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DopamineDriven/react-typescript-portfolio/issues"
